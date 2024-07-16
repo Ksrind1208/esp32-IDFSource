@@ -1,0 +1,27 @@
+[1/10] Performing build step for 'bootloader'
+[1/1] cmd.exe /C "cd /D D:\Documents\File_code\esp32IDFCode\projectIntern\build\bootloader\esp-idf\esptool_py && D:\SystemFile\EspIDF\Espressif\python_env\idf5.2_py3.11_env\Scripts\python.exe D:/SystemFile/EspIDF/Espressif/frameworks/esp-idf-v5.2.2/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 D:/Documents/File_code/esp32IDFCode/projectIntern/build/bootloader/bootloader.bin"
+Bootloader binary size 0x6860 bytes. 0x7a0 bytes (7%) free.
+[2/8] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/app_main.c.obj
+[3/8] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/mqtt.c.obj
+D:/Documents/File_code/esp32IDFCode/projectIntern/main/mqtt.c: In function 'mqtt_event_handler':
+D:/Documents/File_code/esp32IDFCode/projectIntern/main/mqtt.c:65:9: warning: unused variable 'led_sta' [-Wunused-variable]
+   65 |     int led_sta;
+      |         ^~~~~~~
+D:/Documents/File_code/esp32IDFCode/projectIntern/main/mqtt.c:64:9: warning: unused variable 'msg_id' [-Wunused-variable]
+   64 |     int msg_id;
+      |         ^~~~~~
+D:/Documents/File_code/esp32IDFCode/projectIntern/main/mqtt.c: At top level:
+D:/Documents/File_code/esp32IDFCode/projectIntern/main/mqtt.c:51:13: warning: 'led_status' defined but not used [-Wunused-variable]
+   51 | static bool led_status=0;
+      |             ^~~~~~~~~~
+[4/8] Linking C static library esp-idf\main\libmain.a
+[5/8] Generating ld/sections.ld
+[6/8] Linking CXX executable app-template.elf
+[7/8] Generating binary image from built executable
+esptool.py v4.7.0
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated D:/Documents/File_code/esp32IDFCode/projectIntern/build/app-template.bin
+[8/8] cmd.exe /C "cd /D D:\Documents\File_code\esp32IDFCode\projectIntern\build\esp-idf\esptool_py && D:\SystemFile\EspIDF\Espressif\python_env\idf5.2_py3.11_env\Scripts\python.exe D:/SystemFile/EspIDF/Espressif/frameworks/esp-idf-v5.2.2/components/partition_table/check_sizes.py --offset 0x8000 partition --type app D:/Documents/File_code/esp32IDFCode/projectIntern/build/partition_table/partition-table.bin D:/Documents/File_code/esp32IDFCode/projectIntern/build/app-template.bin"
+app-template.bin binary size 0x106dd0 bytes. Smallest app partition is 0x177000 bytes. 0x70230 bytes (30%) free.

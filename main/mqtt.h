@@ -36,7 +36,7 @@
 
 #include "driver/gpio.h"
 #include "soc/gpio_num.h"
-
+#include <stdbool.h>
 #include "esp_log.h"
 #include "mqtt_client.h"
 

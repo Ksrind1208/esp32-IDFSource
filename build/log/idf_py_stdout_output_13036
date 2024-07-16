@@ -1,0 +1,240 @@
+�j5
+[0;32mI (36) boot: c�ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7172
+load:0x40078000,len:15540
+load:0x40080400,len:4
+ho 8 tail 4 room 4
+load:0x40080404,len:3904
+entry 0x40080640
+[0;32mI (31) boot: ESP-IDF v5.2.2-dirty 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Jul 16 2024 23:04:22[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (36) boot: chip revision: v3.0[0m
+[0;32mI (40) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (44) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (49) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (59) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (70) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (85) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (92) boot: End of partition table[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=16884h ( 92292) map[0m
+[0;32mI (136) esp_image: segment 1: paddr=000268ac vaddr=3ffbdb60 size=04ab8h ( 19128) load[0m
+[0;32mI (144) esp_image: segment 2: paddr=0002b36c vaddr=40080000 size=04cach ( 19628) load[0m
+[0;32mI (152) esp_image: segment 3: paddr=00030020 vaddr=400d0020 size=5202ch (335916) map[0m
+[0;32mI (267) esp_image: segment 4: paddr=00082054 vaddr=40084cac size=11fe4h ( 73700) load[0m
+[0;32mI (308) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (308) boot: Disabling RNG early entropy source...[0m
+[0;32mI (319) cpu_start: Multicore app[0m
+[0;32mI (328) cpu_start: Pro cpu start user code[0m
+[0;32mI (328) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (328) cpu_start: Application information:[0m
+[0;32mI (331) cpu_start: Project name:     app-template[0m
+[0;32mI (337) cpu_start: App version:      1[0m
+[0;32mI (341) cpu_start: Compile time:     Jul 16 2024 23:04:10[0m
+[0;32mI (347) cpu_start: ELF file SHA256:  5ef48fd0d...[0m
+[0;32mI (353) cpu_start: ESP-IDF:          v5.2.2-dirty[0m
+[0;32mI (358) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (363) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (368) cpu_start: Chip rev:         v3.0[0m
+[0;32mI (373) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (380) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM[0m
+[0;32mI (386) heap_init: At 3FFB6388 len 00001C78 (7 KiB): DRAM[0m
+[0;32mI (392) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM[0m
+[0;32mI (398) heap_init: At 3FFC5338 len 0001ACC8 (107 KiB): DRAM[0m
+[0;32mI (404) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (410) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (417) heap_init: At 40096C90 len 00009370 (36 KiB): IRAM[0m
+[0;32mI (425) spi_flash: detected chip: generic[0m
+[0;32mI (428) spi_flash: flash io: dio[0m
+[0;33mW (432) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (446) coexist: coex firmware version: d96c1e51f[0m
+[0;32mI (451) main_task: Started on CPU0[0m
+[0;32mI (461) main_task: Calling app_main()[0m
+[0;32mI (511) wifi station: ESP_WIFI_MODE_STA[0m
+[0;32mI (521) BTDM_INIT: BT controller compile version [4012cfb][0m
+[0;32mI (521) BTDM_INIT: Bluetooth MAC: c8:f0:9e:f3:2b:3a[0m
+[0;32mI (521) phy_init: phy_version 4791,2c4672b,Dec 20 2023,16:06:06[0m
+[0;32mI (891) NimBLE: Failed to restore IRKs from store; status=8
+[0m
+[0;32mI (901) NimBLE: GAP procedure initiated: advertise; [0m
+[0;32mI (901) NimBLE: disc_mode=2[0m
+[0;32mI (901) NimBLE:  adv_channel_map=0 own_addr_type=0 adv_filter_policy=0 adv_itvl_min=0 adv_itvl_max=0[0m
+[0;32mI (911) NimBLE: 
+[0m
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+[0;32mI (7011) GAP: BLE GAP EVENT CONNECT OK![0m
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is 29 
+Humidity is 70
+Status code is 0
+Temperature is 29 
+Humidity is 70
+Status code is 0

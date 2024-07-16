@@ -12,6 +12,7 @@
 #include <string.h>
 #include "esp_wifi.h"
 #include "esp_system.h"
+#include "hal/gpio_types.h"
 #include "nvs_flash.h"
 #include "esp_event.h"
 #include "esp_log.h"
@@ -44,23 +45,27 @@
 #include "ble.h"
 #include "dht11.h"
 
-#define SSID "AIoT_JSC"
-#define PASSWORD "aiot1234@"
+#define SSID "Minh Tam 2.4 G"
+#define PASSWORD "21072018"
+
+#define led_pin GPIO_NUM_2
 static const char *TAG = "wifi station";
 
-// Array of pointers to other service definitions
-//	static const struct ble_gatt_svc_def gatt_svcs[] = {
-//	    {.type = BLE_GATT_SVC_TYPE_PRIMARY,
-//	     .uuid = BLE_UUID16_DECLARE(0x180),
-//	     .characteristics = (struct ble_gatt_chr_def[]){
-//	         {.uuid = BLE_UUID16_DECLARE(0xFEF4),
-//	          .flags = BLE_GATT_CHR_F_READ,
-//	          .access_cb = device_read},
-//	         {.uuid = BLE_UUID16_DECLARE(0xDEAD),
-//	          .flags = BLE_GATT_CHR_F_WRITE,
-//	          .access_cb = device_write},
-//	         {0}}},
-//	    {0}};
+static int temp_humid_data[3] = {0, 0,0}; // Array để lưu trữ cả nhiệt độ và độ ẩm
+static const struct ble_gatt_svc_def gatt_svcs[] = {
+    {.type = BLE_GATT_SVC_TYPE_PRIMARY,
+     .uuid = BLE_UUID16_DECLARE(0x180),
+     .characteristics = (struct ble_gatt_chr_def[]){
+         {.uuid = BLE_UUID16_DECLARE(0xFEF4),
+          .flags = BLE_GATT_CHR_F_READ,
+          .access_cb = temp_humid_read,
+          .arg = temp_humid_data},
+         {.uuid = BLE_UUID16_DECLARE(0xDEAD),
+          .flags = BLE_GATT_CHR_F_WRITE,
+          .access_cb = device_write},
+         {0}}},
+    {0}};
+
 void app_main(void)
 {
     //Initialize NVS
@@ -75,19 +80,26 @@ void app_main(void)
     
     wifi_init_sta(SSID,PASSWORD);
     mqtt_app_start();
-    //nimble_port_init();
-    //ble_svc_gap_device_name_set("BLE-Server");
-    //ble_svc_gap_init();
-    //ble_svc_gatt_init();
-    //ble_gatts_count_cfg(gatt_svcs);
-    //ble_gatts_add_svcs(gatt_svcs);
-    //ble_hs_cfg.sync_cb = ble_app_on_sync;
-    //nimble_port_freertos_init(host_task);
+    nimble_port_init();
+    ble_svc_gap_device_name_set("BLE-Server");
+    ble_svc_gap_init();
+    ble_svc_gatt_init();
+    ble_gatts_count_cfg(gatt_svcs);
+    ble_gatts_add_svcs(gatt_svcs);
+    ble_hs_cfg.sync_cb = ble_app_on_sync;
+    nimble_port_freertos_init(host_task);
     DHT11_init(GPIO_NUM_4);
+ 
 
     while(1) {
+        int temperature = DHT11_read().temperature;
+        int humidity = DHT11_read().humidity;
+
+        temp_humid_data[0] = temperature;
+        temp_humid_data[1] = humidity;
+        temp_humid_data[2]++;
+
 		send_data("home/sensor/TemperatureandHumid", DHT11_read().temperature, DHT11_read().humidity,0 ,0, 0);
-		ESP_LOGI(TAG, "sent subscribe successful, msg_id=%d", receive_data("home/sensor/TemperatureandHumid"));
         printf("Temperature is %d \n", DHT11_read().temperature);
         printf("Humidity is %d\n", DHT11_read().humidity);
         printf("Status code is %d\n", DHT11_read().status);

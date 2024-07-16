@@ -1,0 +1,233 @@
+r[0m
+[0;32mI (36) boot: c�ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7172
+load:0x40078000,len:15540
+load:0x40080400,len:4
+ho 8 tail 4 room 4
+load:0x40080404,len:3904
+entry 0x40080640
+[0;32mI (31) boot: ESP-IDF v5.2.2-dirty 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Jul 16 2024 23:04:22[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (36) boot: chip revision: v3.0[0m
+[0;32mI (40) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (44) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (49) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (59) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (70) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (85) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (92) boot: End of partition table[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=27cfch (163068) map[0m
+[0;32mI (161) esp_image: segment 1: paddr=00037d24 vaddr=3ffbdb60 size=059d8h ( 23000) load[0m
+[0;32mI (169) esp_image: segment 2: paddr=0003d704 vaddr=40080000 size=02914h ( 10516) load[0m
+[0;32mI (174) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=bbcc0h (769216) map[0m
+[0;32mI (441) esp_image: segment 4: paddr=000fbce8 vaddr=40082914 size=1b0c4h (110788) load[0m
+[0;32mI (499) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (499) boot: Disabling RNG early entropy source...[0m
+[0;32mI (511) cpu_start: Multicore app[0m
+[0;32mI (520) cpu_start: Pro cpu start user code[0m
+[0;32mI (520) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (520) cpu_start: Application information:[0m
+[0;32mI (523) cpu_start: Project name:     app-template[0m
+[0;32mI (528) cpu_start: App version:      1[0m
+[0;32mI (533) cpu_start: Compile time:     Jul 16 2024 23:04:10[0m
+[0;32mI (539) cpu_start: ELF file SHA256:  7961a0050...[0m
+[0;32mI (544) cpu_start: ESP-IDF:          v5.2.2-dirty[0m
+[0;32mI (549) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (554) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (559) cpu_start: Chip rev:         v3.0[0m
+[0;32mI (564) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (571) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM[0m
+[0;32mI (577) heap_init: At 3FFB6388 len 00001C78 (7 KiB): DRAM[0m
+[0;32mI (583) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM[0m
+[0;32mI (589) heap_init: At 3FFC9D38 len 000162C8 (88 KiB): DRAM[0m
+[0;32mI (595) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (602) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (608) heap_init: At 4009D9D8 len 00002628 (9 KiB): IRAM[0m
+[0;32mI (616) spi_flash: detected chip: generic[0m
+[0;32mI (619) spi_flash: flash io: dio[0m
+[0;33mW (623) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (637) coexist: coex firmware version: d96c1e51f[0m
+[0;32mI (642) main_task: Started on CPU0[0m
+[0;32mI (652) main_task: Calling app_main()[0m
+[0;32mI (712) wifi station: ESP_WIFI_MODE_STA[0m
+I (722) wifi:wifi driver task: 3ffcdcf0, prio:23, stack:6656, core=0
+I (742) wifi:wifi firmware version: 3e0076f
+I (742) wifi:wifi certification version: v7.0
+I (742) wifi:config NVS flash: enabled
+I (742) wifi:config nano formating: disabled
+I (752) wifi:Init data frame dynamic rx buffer num: 32
+I (752) wifi:Init static rx mgmt buffer num: 5
+I (762) wifi:Init management short buffer num: 32
+I (762) wifi:Init dynamic tx buffer num: 32
+I (772) wifi:Init static rx buffer size: 1600
+I (772) wifi:Init static rx buffer num: 10
+I (772) wifi:Init dynamic rx buffer num: 32
+[0;32mI (782) wifi_init: rx ba win: 6[0m
+[0;32mI (782) wifi_init: tcpip mbox: 32[0m
+[0;32mI (792) wifi_init: udp mbox: 6[0m
+[0;32mI (792) wifi_init: tcp mbox: 6[0m
+[0;32mI (792) wifi_init: tcp tx win: 5760[0m
+[0;32mI (802) wifi_init: tcp rx win: 5760[0m
+[0;32mI (802) wifi_init: tcp mss: 1440[0m
+[0;32mI (812) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (812) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (822) phy_init: phy_version 4791,2c4672b,Dec 20 2023,16:06:06[0m
+I (912) wifi:mode : sta (c8:f0:9e:f3:2b:38)
+I (912) wifi:enable tsf
+[0;32mI (912) wifi station: wifi_init_sta finished.[0m
+I (932) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (932) wifi:state: init -> auth (b0)
+I (932) wifi:state: auth -> assoc (0)
+I (932) wifi:state: assoc -> run (10)
+I (952) wifi:connected with Minh Tam 2.4 G, aid = 9, channel 1, BW20, bssid = 60:59:47:05:83:90
+I (952) wifi:security: WPA2-PSK, phy: bgn, rssi: -62
+I (962) wifi:pm start, type: 1
+
+I (1052) wifi:AP's beacon interval = 204800 us, DTIM period = 1
+[0;32mI (1962) esp_netif_handlers: sta ip: 192.168.1.247, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (1962) wifi station: got ip:192.168.1.247[0m
+[0;32mI (1962) wifi station: connected to ap SSID:Minh Tam 2.4 G password:21072018[0m
+[0;32mI (1972) mqttws_example: Other event id:7[0m
+[0;32mI (1982) BTDM_INIT: BT controller compile version [4012cfb][0m
+I (1982) wifi:<ba-add>idx:0 (ifx:0, 60:59:47:05:83:90), tid:0, ssn:2, winSize:64
+[0;32mI (1992) BTDM_INIT: Bluetooth MAC: c8:f0:9e:f3:2b:3a[0m
+I (2002) wifi:<ba-add>idx:1 (ifx:0, 60:59:47:05:83:90), tid:7, ssn:2, winSize:64
+[0;32mI (2292) NimBLE: Failed to restore IRKs from store; status=8
+[0m
+[0;32mI (2292) NimBLE: GAP procedure initiated: advertise; [0m
+[0;32mI (2292) NimBLE: disc_mode=2[0m
+[0;32mI (2292) NimBLE:  adv_channel_map=0 own_addr_type=0 adv_filter_policy=0 adv_itvl_min=0 adv_itvl_max=0[0m
+[0;32mI (2302) NimBLE: 
+[0m
+[0;32mI (3592) mqttws_example: MQTT_EVENT_CONNECTED[0m
+Temperature is 28 
+Humidity is 71
+Status code is 0
+[0;32mI (4432) mqttws_example: MQTT_EVENT_SUBSCRIBED, TOPIC=/topic/qos0[0m
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is -1 
+Humidity is -1
+Status code is -1
+Temperature is -1 
+Humidity is -1
+Status code is -1
+TOPIC=/topic/qos0
+DATA=ON
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is -1 
+Humidity is -1
+Status code is -1
+TOPIC=/topic/qos0
+DATA=ON
+Temperature is -1 
+Humidity is -1
+Status code is -1
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is -1 
+Humidity is -1
+Status code is -2
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is 28 
+Humidity is 71
+Status code is 0
+Temperature is -1 
+Humidity is -1
+Status code is -2

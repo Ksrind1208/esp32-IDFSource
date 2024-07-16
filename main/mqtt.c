@@ -4,12 +4,14 @@
  *  Created on: Jul 15, 2024
  *      Author: minhd
  */
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <stddef.h>
 #include <string.h>
 #include "esp_wifi.h"
 #include "esp_system.h"
+#include "hal/gpio_types.h"
 #include "nvs_flash.h"
 #include "esp_event.h"
 #include "esp_log.h"
@@ -36,15 +38,17 @@
 
 #include "driver/gpio.h"
 #include "soc/gpio_num.h"
+#include <stdbool.h>
 
 #include "esp_log.h"
 #include "mqtt_client.h"
 #include "mqtt.h"
 
 #define MQTTServer "ws://eclipseprojects.io:80"
+
 static esp_mqtt_client_handle_t client;
 static const char *TAG = "mqttws_example";
-
+static bool led_status=0;
 
 void log_error_if_nonzero(const char *message, int error_code)
 {
@@ -58,28 +62,29 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
     esp_mqtt_event_handle_t event = event_data;
     esp_mqtt_client_handle_t client = event->client;
     int msg_id;
+    int led_sta;
     switch ((esp_mqtt_event_id_t)event_id) {
     case MQTT_EVENT_CONNECTED:
         ESP_LOGI(TAG, "MQTT_EVENT_CONNECTED");
-        msg_id = esp_mqtt_client_publish(client, "/topic/qos1", "data_3", 0, 1, 0);
-        ESP_LOGI(TAG, "sent publish successful, msg_id=%d", msg_id);
-        msg_id = esp_mqtt_client_subscribe(client, "/topic/qos0", 0);
-        ESP_LOGI(TAG, "sent subscribe successful, msg_id=%d", msg_id);
+        //msg_id = esp_mqtt_client_publish(client, "/topic/qos1", "data_3", 0, 1, 0);
+        //ESP_LOGI(TAG, "sent publish successful, msg_id=%d", msg_id);
+        esp_mqtt_client_subscribe(client, "/topic/qos0", 0);
+        //ESP_LOGI(TAG, "sent subscribe successful, msg_id=%d", msg_id);
 
-        msg_id = esp_mqtt_client_subscribe(client, "/topic/qos1", 1);
-        ESP_LOGI(TAG, "sent subscribe successful, msg_id=%d", msg_id);
+        //msg_id = esp_mqtt_client_subscribe(client, "/topic/qos1", 1);
+        //ESP_LOGI(TAG, "sent subscribe successful, msg_id=%d", msg_id);
 
-        msg_id = esp_mqtt_client_unsubscribe(client, "/topic/qos1");
-        ESP_LOGI(TAG, "sent unsubscribe successful, msg_id=%d", msg_id);
+        //msg_id = esp_mqtt_client_unsubscribe(client, "/topic/qos1");
+        //ESP_LOGI(TAG, "sent unsubscribe successful, msg_id=%d", msg_id);
         break;
     case MQTT_EVENT_DISCONNECTED:
         ESP_LOGI(TAG, "MQTT_EVENT_DISCONNECTED");
         break;
 
     case MQTT_EVENT_SUBSCRIBED:
-        ESP_LOGI(TAG, "MQTT_EVENT_SUBSCRIBED, msg_id=%d", event->msg_id);
-        msg_id = esp_mqtt_client_publish(client, "/topic/qos0", "data", 0, 0, 0);
-        ESP_LOGI(TAG, "sent publish successful, msg_id=%d", msg_id);
+        ESP_LOGI(TAG, "MQTT_EVENT_SUBSCRIBED, TOPIC=%s", "/topic/qos0");
+        //msg_id = esp_mqtt_client_publish(client, "/topic/qos0", "data", 0, 0, 0);
+        //ESP_LOGI(TAG, "sent publish successful, msg_id=%d", msg_id);
         break;
     case MQTT_EVENT_UNSUBSCRIBED:
         ESP_LOGI(TAG, "MQTT_EVENT_UNSUBSCRIBED, msg_id=%d", event->msg_id);
@@ -88,9 +93,16 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
         ESP_LOGI(TAG, "MQTT_EVENT_PUBLISHED, msg_id=%d", event->msg_id);
         break;
     case MQTT_EVENT_DATA:
-        ESP_LOGI(TAG, "MQTT_EVENT_DATA");
+        //ESP_LOGI(TAG, "MQTT_EVENT_DATA");
         printf("TOPIC=%.*s\r\n", event->topic_len, event->topic);
         printf("DATA=%.*s\r\n", event->data_len, event->data);
+        
+        gpio_set_direction(GPIO_NUM_2, GPIO_MODE_OUTPUT);
+        if (strncmp(event->data, "ON", event->data_len) == 0) {
+            gpio_set_level(GPIO_NUM_2, 1);
+        } else if (strncmp(event->data, "OFF", event->data_len) == 0) {
+            gpio_set_level(GPIO_NUM_2, 0);
+        }
         break;
     case MQTT_EVENT_ERROR:
         ESP_LOGI(TAG, "MQTT_EVENT_ERROR");
@@ -139,8 +151,6 @@ void send_data(char *topic, int temp, int humid, int len, int qos, int retain){
 	esp_mqtt_client_publish(client, topic, format_data(temp,humid),0 ,0, 0);
 }
 
-int receive_data(char *topic){
-	return esp_mqtt_client_subscribe(client, topic, 1024*2);
-}
+
 
 

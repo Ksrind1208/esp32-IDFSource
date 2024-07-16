@@ -42,11 +42,27 @@
 #include "ble.h"
 uint8_t ble_addr_type;
 // Read data from ESP32 defined as server
-int device_read(uint16_t con_handle, uint16_t attr_handle, struct ble_gatt_access_ctxt *ctxt, void *arg)
-{
-    os_mbuf_append(ctxt->om, "Data from the server", strlen("Data from the server"));
+/*
+ * ble.c
+ *
+ *  Created on: Jul 15, 2024
+ *      Author: minhd
+ */
+#include "ble.h"
+uint8_t ble_addr_type;
+
+// Read data from ESP32 defined as server
+int temp_humid_read(uint16_t conn_handle, uint16_t attr_handle, struct ble_gatt_access_ctxt *ctxt, void *arg) {
+    char temp_humid_str[20];
+    int *data = (int *)arg;
+    int temperature = data[0];
+    int humidity = data[1];
+    int sta=data[2];
+    snprintf(temp_humid_str, sizeof(temp_humid_str), "%d-%d-%d", temperature, humidity,sta);
+    os_mbuf_append(ctxt->om, temp_humid_str, strlen(temp_humid_str));
     return 0;
 }
+
 int device_write(uint16_t conn_handle, uint16_t attr_handle, struct ble_gatt_access_ctxt *ctxt, void *arg)
 {
     char *data = (char *)ctxt->om->om_data;
@@ -73,6 +89,7 @@ int device_write(uint16_t conn_handle, uint16_t attr_handle, struct ble_gatt_acc
     }
     return 0;
 }
+
 // BLE event handling
 int ble_gap_event(struct ble_gap_event *event, void *arg)
 {
@@ -132,4 +149,3 @@ void host_task(void *param)
 {
     nimble_port_run(); // This function will return only when nimble_port_stop() is executed
 }
-
