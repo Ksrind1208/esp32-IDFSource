@@ -67,12 +67,17 @@ int device_write(uint16_t conn_handle, uint16_t attr_handle, struct ble_gatt_acc
 {
     char *data = (char *)ctxt->om->om_data;
     printf("%s\n", data);
-    if (strcmp(data, "LIGHT ON") == 0)
+    
+    if (strncmp(data, "ON",2) == 0)
     {
+		gpio_set_direction(GPIO_NUM_2, GPIO_MODE_OUTPUT);
+		gpio_set_level(GPIO_NUM_2,1);
         printf("LIGHT ON\n");
     }
-    else if (strcmp(data, "LIGHT OFF") == 0)
+    else if (strncmp(data, "OFF",3) == 0)
     {
+		gpio_set_direction(GPIO_NUM_2, GPIO_MODE_OUTPUT);
+		gpio_set_level(GPIO_NUM_2,0);
         printf("LIGHT OFF\n");
     }
     else if (strcmp(data, "FAN ON") == 0)

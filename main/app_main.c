@@ -45,8 +45,8 @@
 #include "ble.h"
 #include "dht11.h"
 
-#define SSID "Minh Tam 2.4 G"
-#define PASSWORD "21072018"
+#define SSID "AIoT_JSC"
+#define PASSWORD "aiot1234@"
 
 #define led_pin GPIO_NUM_2
 static const char *TAG = "wifi station";
@@ -88,7 +88,9 @@ void app_main(void)
     ble_gatts_add_svcs(gatt_svcs);
     ble_hs_cfg.sync_cb = ble_app_on_sync;
     nimble_port_freertos_init(host_task);
-    DHT11_init(GPIO_NUM_4);
+    
+    
+    DHT11_init(GPIO_NUM_2);
  
 
     while(1) {
@@ -99,7 +101,7 @@ void app_main(void)
         temp_humid_data[1] = humidity;
         temp_humid_data[2]++;
 
-		send_data("home/sensor/TemperatureandHumid", DHT11_read().temperature, DHT11_read().humidity,0 ,0, 0);
+		//send_data("home/sensor/TemperatureandHumid", DHT11_read().temperature, DHT11_read().humidity,0 ,0, 0);
         printf("Temperature is %d \n", DHT11_read().temperature);
         printf("Humidity is %d\n", DHT11_read().humidity);
         printf("Status code is %d\n", DHT11_read().status);
