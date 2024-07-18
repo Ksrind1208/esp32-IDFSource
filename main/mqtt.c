@@ -143,7 +143,7 @@ char* format_data(int temperature, int humidity) {
     }
 
     // Format the string
-    sprintf(formatted_data, "%d-%d-%d", temperature, humidity,flag);
+    sprintf(formatted_data, "%d-%d", temperature, humidity);
     flag++;
     return formatted_data;
 }
